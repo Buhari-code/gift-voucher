@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>🎁 Your ₹2500 Gift Voucher</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+
+<!-- Confetti Script -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<style>
+:root {
+  --gold-light: #fff9e5;
+  --gold-dark: #ffd580;
+  --gold: #d4af37;
+  --red: #c82333;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  width: 100%;
+  background: linear-gradient(180deg, var(--gold-light), var(--gold-dark));
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.voucher-card {
+  background: white;
+  border-radius: 1.5rem;
+  box-shadow: 0 0.5rem 2rem rgba(0,0,0,0.1);
+  text-align: center;
+  padding: 3rem 2.5rem;
+  width: 90%;
+  max-width: 400px;
+  position: relative;
+  z-index: 2;
+}
+
+h1 { color: var(--gold); font-size: 2rem; margin-bottom: 1rem; }
+.amount { font-size: 3rem; font-weight: 700;   color: var(--red); margin: 1rem 0; }
+.subtitle { font-size: 1.2rem; color: #555; margin-bottom: 2rem; }
+
+.button {
+  background: var(--red);
+  color: white;
+  border: none;
+  border-radius: 2rem;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.button:hover { background: #a61e2a; }
+
+.balloon {
+  position: absolute;
+  bottom: -100px;
+  width: 40px;
+  height: 55px;
+  border-radius: 50%;
+  animation: float 6s linear infinite;
+}
+@keyframes float {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-110vh) scale(1.1); opacity: 0; }
+}
+
+footer {
+  position: absolute;
+  bottom: 20px;
+  color: #555;
+  font-size: 0.9rem;
+  text-align: center;
+  width: 100%;
+}
+
+/* Responsive for mobile */
+@media(max-width: 768px){
+  .voucher-card {
+    padding: 10vw 8vw;
+    border-radius: 5vw;
+  }
+  h1 { font-size: 6vw; }
+  .amount { font-size: 10vw; }
+  .subtitle { font-size: 4vw; margin-bottom: 5vw; }
+  .button { padding: 4vw 10vw; font-size: 4vw; border-radius: 10vw; }
+  .balloon { width: 10vw; height: 14vw; bottom: -15vw; }
+  footer { font-size: 3vw; bottom: 2vw; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Balloons -->
+<div class="balloon" style="left:10%; background:radial-gradient(circle at 30% 30%, #ff7f7f, #ff4040); animation-delay:0s;"></div>
+<div class="balloon" style="left:30%; background:radial-gradient(circle at 30% 30%, #ffd54f, #ffb300); animation-delay:1s;"></div>
+<div class="balloon" style="left:50%; background:radial-gradient(circle at 30% 30%, #4fc3f7, #0288d1); animation-delay:2s;"></div>
+<div class="balloon" style="left:70%; background:radial-gradient(circle at 30% 30%, #81c784, #388e3c); animation-delay:3s;"></div>
+<div class="balloon" style="left:90%; background:radial-gradient(circle at 30% 30%, #ba68c8, #6a1b9a); animation-delay:4s;"></div>
+
+<!-- Voucher Card -->
+<div class="voucher-card">
+  <h1>🎉 Congratulations! Vishal Enterprises</h1>
+  <div class="amount">₹2500</div>
+  <div class="subtitle">Diwali Gift Voucher from Letz Vacation Tours and Travels</div>
+  <button class="button" id="claimBtn">Claim Now</button>
+</div>
+
+<footer>Thank you for being our valued client 💖</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const button = document.getElementById("claimBtn");
+  button.addEventListener("click", () => {
+    // Confetti
+    let duration = 2000;
+    let end = Date.now() + duration;
+    (function frame() {
+      confetti({
+        particleCount: 8,
+        angle: 60,
+        spread: 55,
+        origin: { x: 0 },
+        colors: ['#FFD700', '#FF4500', '#FF69B4']
+      });
+      confetti({
+        particleCount: 8,
+        angle: 120,
+        spread: 55,
+        origin: { x: 1 },
+        colors: ['#FFD700', '#FF4500', '#FF69B4']
+      });
+      if (Date.now() < end) requestAnimationFrame(frame);
+    })();
+
+    // Alert coupon code
+    setTimeout(() => {
+      alert("🎁 Coupon Code: LETZ2500GIFT045\n✅ You have successfully received your ₹2500 voucher!");
+    }, 1000);
+  });
+});
+</script>
+
+</body>
+</html>
